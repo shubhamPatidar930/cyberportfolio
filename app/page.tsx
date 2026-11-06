@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { ArrowDown, ArrowUpRight, Check, Github, Linkedin, Mail, Pause, Play, RotateCcw, Sparkles } from "lucide-react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 
 const projects = [
   { title: "Network Scanning & Traffic Analysis", bullets: ["Scanned networks and identified open ports and running services using Nmap.", "Analyzed packets and traffic patterns with Wireshark.", "Practised reconnaissance and anomaly identification in lab environments."], tech: ["Nmap", "Wireshark", "Network security"] },
@@ -129,7 +129,7 @@ export default function Home() {
 
     <section id="contact" className="section contact"><p className="eyebrow" data-build="type">05 / Contact</p><div className="contact-card" data-build="pop"><Sparkles size={20} /><h2>Let&apos;s talk security.</h2><p>Open to applying security assessment techniques and GRC knowledge in a professional environment.</p><a className="button light" href="mailto:shubhampatidar2006@gmail.com">Email Shubham <ArrowUpRight size={16} /></a></div><div className="socials" data-build="type"><a href="mailto:shubhampatidar2006@gmail.com"><Mail size={16} />shubhampatidar2006@gmail.com</a><a href="https://www.linkedin.com/in/shubham-patidar-476559382/" target="_blank" rel="noreferrer"><Linkedin size={16} />LinkedIn</a><a href="https://github.com/shubhamPatidar930" target="_blank" rel="noreferrer"><Github size={16} />GitHub</a></div></section>
     <footer><span>© {new Date().getFullYear()} Shubham Patidar</span><span>Cybersecurity · GRC · Practical learning</span></footer>
-    {cursors.map((c, i) => <div className="agent" key={c.name} style={{ left: c.x, top: c.y, "--agent": c.color } as React.CSSProperties}><div className="robot"><i /><i /><em /></div><span>{c.name}</span><b>↖</b>{c.target && <div className="wire" style={{ width: Math.min(c.target.width, 150), height: Math.min(c.target.height, 90) }}><i /><i /><i /><i /><label>{c.target.width.toFixed(0)} × {c.target.height.toFixed(0)}</label></div>}</div>)}
+    {cursors.map((c, i) => <div className="agent" key={c.name} style={{ left: c.x, top: c.y, "--agent": c.color } as CSSProperties}><div className="robot"><i /><i /><em /></div><span>{c.name}</span><b>↖</b>{c.target && <div className="wire" style={{ width: Math.min(c.target.width, 150), height: Math.min(c.target.height, 90) }}><i /><i /><i /><i /><label>{c.target.width.toFixed(0)} × {c.target.height.toFixed(0)}</label></div>}</div>)}
     <div className="dock"><button onClick={() => setPaused((v) => !v)} aria-label="Pause animation">{paused ? <Play size={15} /> : <Pause size={15} />}{paused ? "Resume" : "Pause"}</button><button onClick={toggleAgents} aria-pressed={agentsOn}>{agentsOn ? "Agents on" : "Agents off"}</button><button onClick={startTour} disabled={touring}>{touring ? "Touring" : <><RotateCcw size={15} />Tour</>}</button></div>
   </main>;
 }
